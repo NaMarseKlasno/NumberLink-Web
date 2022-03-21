@@ -4,7 +4,7 @@
 
 
 
-####**_UML Diagram_**
+### **UML Diagram**
 ![alt text](src/main/resources/uml.png)
 
 
