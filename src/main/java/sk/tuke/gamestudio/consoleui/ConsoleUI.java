@@ -21,9 +21,8 @@ public class ConsoleUI {
     }
 
 
-    public void play() {
-
-
+    public void play()
+    {
         do {
             printDetails();
             printField();
