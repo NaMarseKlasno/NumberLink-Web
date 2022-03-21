@@ -1,4 +1,4 @@
-package sk.tuke.kpi.kp.NumberLink;
+package main.java.sk.tuke.gamestudio.core;
 
 public class Element {
 
