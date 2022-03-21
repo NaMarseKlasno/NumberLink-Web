@@ -1,6 +1,6 @@
 ### **NumberLink**
 
-![alt text](src/main/resources/tiles.png)
+![alt text](src/main/resources/numberlink.png)
 
 
 
