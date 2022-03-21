@@ -1,11 +1,11 @@
 ### **NumberLink**
 
-![alt text](img/tiles.png)
+![alt text](src/main/resources/tiles.png)
 
 
 
 ####**_UML Diagram_**
-![alt text](img/uml.png)
+![alt text](src/main/resources/uml.png)
 
 
 
