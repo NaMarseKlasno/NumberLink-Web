@@ -3,10 +3,7 @@ package sk.tuke.gamestudio.consoleui;
 import sk.tuke.gamestudio.core.Field;
 import sk.tuke.gamestudio.entity.User;
 import sk.tuke.gamestudio.entity.UserJDBC;
-import sk.tuke.gamestudio.entity.UserServise;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI {
@@ -32,9 +29,7 @@ public class ConsoleUI {
 
     public void play()
     {
-        // comment if not work!!!
         this.user.addUser(this.inUser());
-        // comment if not work!!!
 
         do {
             printDetails();
@@ -84,13 +79,6 @@ public class ConsoleUI {
         System.out.print("Enter userName: ");
         String name = in.nextLine();
 
-        // comment if not work!!!
-        if (!(in.nextLine().toUpperCase()).matches("[A-z]{2,32}")) {
-            System.out.println("name must be between 2 and 32 characters & without spaces!");
-            name = in.nextLine().toUpperCase();
-        }
-        // comment if not work!!!
-
         return new User(name, this.currentLvl);
     }
 
@@ -105,22 +93,18 @@ public class ConsoleUI {
         }
 
         if ("SHOW".equals(line)) {
-//            List<User> list = new ArrayList<>();
             var list = user.getUsersList();
-//            User u1 = new User("qwqw1", 1);
-//            User u2 = new User("qwqw2", 2);
-//            User u3 = new User("qwqw3", 3);
-//            User u4 = new User("qwqw4", 4);
-//            list.add(u1);
-//            list.add(u2);
-//            list.add(u3);
-//            list.add(u4);
 
             for (int i = 0; i < list.size(); i++) {
                 var user = list.get(i);
                 System.out.printf("%d. |%s - %d|\n", i+1, user.getUserName(), user.getLastLevel());
             }
 
+        }
+
+        if ("RESET".equals(line)) {
+            user.reset();
+            return;
         }
 
         if (line.length() < 4) {

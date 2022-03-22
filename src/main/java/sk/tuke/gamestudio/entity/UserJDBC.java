@@ -9,10 +9,11 @@ public class UserJDBC implements UserServise {
 
     private static final String username = "macbookpro";
     private static final String password = "moskva4";
-    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String url = "jdbc:postgresql://localhost:5433/postgres";
 
-    public static final String INSERT_STATEMENT = "INSERT INTO userTable (player, lastLevel) VALUES (?, ?)";
-    public static final String SELECT_STATEMENT = "SELECT player, lastLevel FROM user WHERE game = ?";
+    public static final String INSERT_STATEMENT = "INSERT INTO userTable(player, lastLevel) VALUES (?, ?)";
+    public static final String SELECT_STATEMENT = "SELECT player, lastLevel FROM userTable";
+    public static final String DELETE_STATEMENT = "DELETE FROM userTable";
 
 
 
@@ -22,7 +23,9 @@ public class UserJDBC implements UserServise {
              var statement = connection.prepareStatement(INSERT_STATEMENT);
         ) {
             statement.setString(1, user.getUserName());
+            System.out.println(user.getUserName());
             statement.setInt(2, user.getLastLevel());
+            System.out.println(user.getLastLevel());
             statement.executeUpdate();
         }
         catch (SQLException e) {
@@ -49,4 +52,17 @@ public class UserJDBC implements UserServise {
         }
         return null;
     }
+
+
+    @Override
+    public void reset() {
+        try (var connection = DriverManager.getConnection(url, username, password);
+             var statement = connection.createStatement();
+        ) {
+            statement.executeUpdate(DELETE_STATEMENT);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
