@@ -1,9 +1,18 @@
 package sk.tuke.gamestudio.consoleui;
 
 import sk.tuke.gamestudio.core.Field;
+import sk.tuke.gamestudio.entity.User;
+import sk.tuke.gamestudio.entity.UserJDBC;
+import sk.tuke.gamestudio.entity.UserServise;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI {
+
+    private UserJDBC user = new UserJDBC();
+
 
     private final Field field;
     private final Scanner in = new Scanner(System.in);
@@ -23,6 +32,10 @@ public class ConsoleUI {
 
     public void play()
     {
+        // comment if not work!!!
+        this.user.addUser(this.inUser());
+        // comment if not work!!!
+
         do {
             printDetails();
             printField();
@@ -66,6 +79,21 @@ public class ConsoleUI {
         } System.out.print("\n");
     }
 
+    private User inUser()
+    {
+        System.out.print("Enter userName: ");
+        String name = in.nextLine();
+
+        // comment if not work!!!
+        if (!(in.nextLine().toUpperCase()).matches("[A-z]{2,32}")) {
+            System.out.println("name must be between 2 and 32 characters & without spaces!");
+            name = in.nextLine().toUpperCase();
+        }
+        // comment if not work!!!
+
+        return new User(name, this.currentLvl);
+    }
+
     private void processInput()
     {
         System.out.print("Enter command: ");
@@ -76,8 +104,38 @@ public class ConsoleUI {
             System.exit(0);
         }
 
+        if ("SHOW".equals(line)) {
+//            List<User> list = new ArrayList<>();
+            var list = user.getUsersList();
+//            User u1 = new User("qwqw1", 1);
+//            User u2 = new User("qwqw2", 2);
+//            User u3 = new User("qwqw3", 3);
+//            User u4 = new User("qwqw4", 4);
+//            list.add(u1);
+//            list.add(u2);
+//            list.add(u3);
+//            list.add(u4);
+
+            for (int i = 0; i < list.size(); i++) {
+                var user = list.get(i);
+                System.out.printf("%d. |%s - %d|\n", i+1, user.getUserName(), user.getLastLevel());
+            }
+
+        }
+
+        if (line.length() < 4) {
+            System.out.println("\u001B[31m"+ "Command failed!"+"\u001B[0m");
+            return;
+        }
+        String test = line.substring(0, 2);
+        if (!test.matches("[1-9]{2}")) {
+            System.out.println("\u001B[31m"+ "Command failed!"+"\u001B[0m");
+            return;
+        }
+
         int x = Integer.parseInt(line.substring(0, 1));
         int y = Integer.parseInt(line.substring(1, 2));
+
 
         if (x > 0 && y > 0 && x <= field.getColumnCount() && y <= field.getRowCount()) {
             if (line.charAt(2) != 'W' && line.charAt(2) != 'E' && line.charAt(2) != 'S' && line.charAt(2) != 'N') {
