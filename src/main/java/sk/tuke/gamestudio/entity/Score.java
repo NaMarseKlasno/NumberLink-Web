@@ -1,4 +1,4 @@
-package main.java.sk.tuke.gamestudio.entity;
+package sk.tuke.gamestudio.entity;
 
 public class Score {
 }

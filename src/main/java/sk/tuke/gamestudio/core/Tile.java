@@ -1,4 +1,4 @@
-package main.java.sk.tuke.gamestudio.core;
+package sk.tuke.gamestudio.core;
 
 public class Tile {
 
@@ -20,13 +20,27 @@ public class Tile {
 
     private void setColor() {
         switch (this.content) {
-            case 1 -> this.Color = YELLOW;
-            case 2 -> this.Color = BLUE;
-            case 3 -> this.Color = GREEN;
-            case 4 -> this.Color = RED;
-            case 5 -> this.Color = PURPLE;
-            case 6 -> this.Color = CYAN;
-            default -> this.Color = WHITE;
+            case 1:
+                this.Color = YELLOW;
+                break;
+            case 2:
+                this.Color = BLUE;
+                break;
+            case 3:
+                this.Color = GREEN;
+                break;
+            case 4:
+                this.Color = RED;
+                break;
+            case 5:
+                this.Color = PURPLE;
+                break;
+            case 6:
+                this.Color = CYAN;
+                break;
+            default:
+                this.Color = WHITE;
+                break;
         }
     }
 

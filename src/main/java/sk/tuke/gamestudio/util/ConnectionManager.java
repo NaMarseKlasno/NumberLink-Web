@@ -1,4 +1,4 @@
-package main.java.sk.tuke.gamestudio.util;
+package sk.tuke.gamestudio.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

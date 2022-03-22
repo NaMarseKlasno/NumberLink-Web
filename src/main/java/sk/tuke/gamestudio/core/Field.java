@@ -1,4 +1,4 @@
-package main.java.sk.tuke.gamestudio.core;
+package sk.tuke.gamestudio.core;
 
 public class Field {
 
@@ -35,28 +35,29 @@ public class Field {
             if (this.tiles[y-1][x-1].getContent() == 0) return false;
 
             switch (dir) {
-                case 'W' -> {
+                case 'W':
                     for (int i = x-1, j = 0; j <= count; i--, ++j) {
                         this.tiles[y-1][i].setContent(tiles[y-1][x-1].getContent());
                     }
-                }
-                case 'E' -> {
+                    break;
+
+                case 'E':
                     for (int i = x-1, j = 0; j <= count; i++, ++j) {
                         this.tiles[y-1][i].setContent(tiles[y-1][x-1].getContent());
                     }
-                }
-                case 'N' -> {
+                    break;
+                case 'N':
                     for (int i = y-1, j = 0; j <= count; i--, ++j) {
                         this.tiles[i][x-1].setContent(tiles[y-1][x-1].getContent());
                     }
-                }
-                case 'S' -> {
+                    break;
+
+                case 'S':
                     for (int i = y-1, j = 0; j <= count; i++, ++j) {
                         this.tiles[i][x-1].setContent(tiles[y-1][x-1].getContent());
                     }
-                }
+                    break;
             }
-
             return true;
         }
 

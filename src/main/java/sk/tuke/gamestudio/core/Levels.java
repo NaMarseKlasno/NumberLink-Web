@@ -1,4 +1,6 @@
-package main.java.sk.tuke.gamestudio.core;
+package sk.tuke.gamestudio.core;
+
+import sk.tuke.gamestudio.core.Tile;
 
 public class Levels {
 

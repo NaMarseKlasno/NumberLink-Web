@@ -1,6 +1,6 @@
-package main.java.sk.tuke.gamestudio.consoleui;
+package sk.tuke.gamestudio.consoleui;
 
-import main.java.sk.tuke.gamestudio.core.Field;
+import sk.tuke.gamestudio.core.Field;
 import java.util.Scanner;
 
 public class ConsoleUI {

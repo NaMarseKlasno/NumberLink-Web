@@ -1,9 +1,9 @@
-package main.java.sk.tuke.gamestudio;
+package sk.tuke.gamestudio;
 
-import main.java.sk.tuke.gamestudio.core.Field;
-import main.java.sk.tuke.gamestudio.consoleui.ConsoleUI;
-import main.java.sk.tuke.gamestudio.util.ConnectionManager;
+import sk.tuke.gamestudio.consoleui.ConsoleUI;
+import sk.tuke.gamestudio.core.Field;
 import org.postgresql.Driver;
+import sk.tuke.gamestudio.util.ConnectionManager;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
