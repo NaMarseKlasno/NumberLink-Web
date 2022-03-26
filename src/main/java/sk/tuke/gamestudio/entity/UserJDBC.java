@@ -23,9 +23,7 @@ public class UserJDBC implements UserServise {
              var statement = connection.prepareStatement(INSERT_STATEMENT);
         ) {
             statement.setString(1, user.getUserName());
-            System.out.println(user.getUserName());
             statement.setInt(2, user.getLastLevel());
-            System.out.println(user.getLastLevel());
             statement.executeUpdate();
         }
         catch (SQLException e) {

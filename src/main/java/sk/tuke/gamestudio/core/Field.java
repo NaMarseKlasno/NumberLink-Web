@@ -22,8 +22,6 @@ public class Field {
         this.columnCount = lvl.getColumn();
 
         this.tiles = lvl.getTiles();
-
-
     }
 
     public boolean connectTiles(int x, int y, char dir, int count)
@@ -36,23 +34,35 @@ public class Field {
 
             switch (dir) {
                 case 'W':
+                    for (int i = x, j = 0; j < count; i--, ++j) {
+                        if (this.tiles[y-1][i].getContent() != 0) return false;
+                    }
                     for (int i = x-1, j = 0; j <= count; i--, ++j) {
                         this.tiles[y-1][i].setContent(tiles[y-1][x-1].getContent());
                     }
                     break;
 
                 case 'E':
+                    for (int i = x, j = 0; j < count; i++, ++j) {
+                        if (this.tiles[y-1][i].getContent() != 0) return false;
+                    }
                     for (int i = x-1, j = 0; j <= count; i++, ++j) {
                         this.tiles[y-1][i].setContent(tiles[y-1][x-1].getContent());
                     }
                     break;
                 case 'N':
+                    for (int i = y, j = 0; j < count; i--, ++j) {
+                        if (this.tiles[i][x-1].getContent() != 0) return false;
+                    }
                     for (int i = y-1, j = 0; j <= count; i--, ++j) {
                         this.tiles[i][x-1].setContent(tiles[y-1][x-1].getContent());
                     }
                     break;
 
                 case 'S':
+                    for (int i = y, j = 0; j < count; i++, ++j) {
+                        if (this.tiles[i][x-1].getContent() != 0) return false;
+                    }
                     for (int i = y-1, j = 0; j <= count; i++, ++j) {
                         this.tiles[i][x-1].setContent(tiles[y-1][x-1].getContent());
                     }
