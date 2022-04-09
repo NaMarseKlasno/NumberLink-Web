@@ -34,7 +34,7 @@ public class Field {
 
             switch (dir) {
                 case 'W':
-                    for (int i = x, j = 0; j < count; i--, ++j) {
+                    for (int i = x-2, j = 0; j < count; i--, ++j) {
                         if (this.tiles[y-1][i].getContent() != 0) return false;
                     }
                     for (int i = x-1, j = 0; j <= count; i--, ++j) {
@@ -51,7 +51,7 @@ public class Field {
                     }
                     break;
                 case 'N':
-                    for (int i = y, j = 0; j < count; i--, ++j) {
+                    for (int i = y-2, j = 0; j < count; i--, ++j) {
                         if (this.tiles[i][x-1].getContent() != 0) return false;
                     }
                     for (int i = y-1, j = 0; j <= count; i--, ++j) {

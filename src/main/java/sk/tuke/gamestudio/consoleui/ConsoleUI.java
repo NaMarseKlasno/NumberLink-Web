@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private UserJDBC user = new UserJDBC();
+    private UserJDBC userJDBC = new UserJDBC();
+    private User currentUser;
 
 
     private final Field field;
@@ -29,7 +30,8 @@ public class ConsoleUI {
 
     public void play()
     {
-        this.user.addUser(this.inUser());
+        this.currentUser = this.inUser();
+        this.userJDBC.addUser(currentUser);
 
         do {
             printDetails();
@@ -38,6 +40,8 @@ public class ConsoleUI {
 
             if (field.isLevelSolved()) {
                 this.field.generate(++currentLvl);
+                this.currentUser.setLastLevel(currentLvl);
+                this.userJDBC.update(currentUser);
             }
 
         } while (currentLvl<=10);
@@ -76,7 +80,7 @@ public class ConsoleUI {
 
     private User inUser()
     {
-        System.out.print("Enter userName: ");
+        System.out.print("Enter nickname: ");
         String name = in.nextLine();
 
         return new User(name, this.currentLvl);
@@ -93,7 +97,7 @@ public class ConsoleUI {
         }
 
         if ("SHOW".equals(line)) {
-            var list = user.getUsersList();
+            var list = userJDBC.getUsersList();
 
             for (int i = 0; i < list.size(); i++) {
                 var user = list.get(i);
@@ -103,7 +107,7 @@ public class ConsoleUI {
         }
 
         if ("RESET".equals(line)) {
-            user.reset();
+            userJDBC.reset();
             return;
         }
 

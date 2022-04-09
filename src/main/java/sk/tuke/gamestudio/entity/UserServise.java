@@ -6,5 +6,6 @@ public interface UserServise {
     void addUser(User user);
     List<User> getUsersList();
     void reset();
+    void update(User user);
 }
 

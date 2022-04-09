@@ -9,7 +9,7 @@ import sk.tuke.gamestudio.entity.UserJDBC;
 
 public class UserServiceTest {
 
-    private UserJDBC userJDBC = new UserJDBC();
+    private final UserJDBC userJDBC = new UserJDBC();
 
     @Test
     public void testAddUser() {
