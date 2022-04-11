@@ -1,6 +1,9 @@
 package sk.tuke.gamestudio.core;
 
-import sk.tuke.gamestudio.core.Tile;
+
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.stream.IntStream;
 
 public class Levels {
 
@@ -10,7 +13,11 @@ public class Levels {
     private Tile [][] levelComplete;
     private final int setLvl;
 
-    public Levels(int setLvl) {
+//    private List<LevelState> statusList = new ArrayList<>();;
+
+    public Levels(int setLvl)
+    {
+//        IntStream.rangeClosed(1, 10).forEach(i -> statusList.add(new LevelState(i, LevelState.Status.INACCESSIBLE)));
         this.setLvl = setLvl;
         setLevel();
     }
@@ -25,6 +32,7 @@ public class Levels {
     }
 
 
+
     private void setLevel()
     {
         if (setLvl < 0 || setLvl > 10) {
@@ -36,220 +44,34 @@ public class Levels {
         switch (setLvl)
         {
             case 1:
-                tiles = new Tile[][] {
-                        {new Tile(1), new Tile(2), new Tile(1)},
-                        {new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(2), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(2), new Tile(1)},
-                        {new Tile(1), new Tile(2), new Tile(1)},
-                        {new Tile(1), new Tile(2), new Tile(1)},
-                        {new Tile(1), new Tile(1), new Tile(1)}
-                };
-
-                this.row    = 4;
-                this.column = 3;
-
+                level_1();
                 break;
-
             case 2:
-                tiles = new Tile[][] {
-                        {new Tile(1), new Tile(3), new Tile(0), new Tile(1)},
-                        {new Tile(0), new Tile(2), new Tile(3), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(2), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(3), new Tile(3), new Tile(1)},
-                        {new Tile(1), new Tile(2), new Tile(3), new Tile(1)},
-                        {new Tile(1), new Tile(2), new Tile(2), new Tile(1)},
-                        {new Tile(1), new Tile(1), new Tile(1), new Tile(1)}
-                };
-
-                this.row    = 4;
-                this.column = 4;
-
+                level_2();
                 break;
-
             case 3:
-                tiles = new Tile[][] {
-                        {new Tile(1), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(2), new Tile(0)},
-                        {new Tile(0), new Tile(3), new Tile(0), new Tile(1)},
-                        {new Tile(0), new Tile(2), new Tile(0), new Tile(3)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(1), new Tile(1), new Tile(1)},
-                        {new Tile(2), new Tile(2), new Tile(2), new Tile(1)},
-                        {new Tile(2), new Tile(3), new Tile(3), new Tile(1)},
-                        {new Tile(2), new Tile(2), new Tile(3), new Tile(3)}
-                };
-
-                this.row    = 4;
-                this.column = 4;
-
+                level_3();
                 break;
             case 4:
-                tiles = new Tile[][] {
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(1)},
-                        {new Tile(2), new Tile(3), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(2), new Tile(0)},
-                        {new Tile(0), new Tile(1), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(3)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(2), new Tile(2), new Tile(2), new Tile(1)},
-                        {new Tile(2), new Tile(3), new Tile(2), new Tile(1)},
-                        {new Tile(3), new Tile(3), new Tile(2), new Tile(1)},
-                        {new Tile(3), new Tile(1), new Tile(1), new Tile(1)},
-                        {new Tile(3), new Tile(3), new Tile(3), new Tile(3)}
-                };
-
-                this.row    = 5;
-                this.column = 4;
-
+                level_4();
                 break;
             case 5:
-                tiles = new Tile[][] {
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(1), new Tile(2)},
-                        {new Tile(0), new Tile(2), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(3), new Tile(0)},
-                        {new Tile(3), new Tile(1), new Tile(0), new Tile(0), new Tile(0)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(2)},
-                        {new Tile(1), new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
-                        {new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1)},
-                        {new Tile(3), new Tile(3), new Tile(3), new Tile(3), new Tile(1)},
-                        {new Tile(3), new Tile(1), new Tile(1), new Tile(1), new Tile(1)}
-                };
-
-                this.row    = 5;
-                this.column = 5;
-
+                level_5();
                 break;
             case 6:
-
-                tiles = new Tile[][] {
-                        {new Tile(1), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(2), new Tile(0), new Tile(2), new Tile(3), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(1), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(3), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(1), new Tile(2), new Tile(2), new Tile(2)},
-                        {new Tile(2), new Tile(1), new Tile(2), new Tile(3), new Tile(2)},
-                        {new Tile(2), new Tile(1), new Tile(1), new Tile(3), new Tile(2)},
-                        {new Tile(2), new Tile(3), new Tile(3), new Tile(3), new Tile(2)},
-                        {new Tile(2), new Tile(2), new Tile(2), new Tile(2), new Tile(2)}
-                };
-
-                this.row    = 5;
-                this.column = 5;
-
+                level_6();
                 break;
             case 7:
-
-                tiles = new Tile[][] {
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(1), new Tile(0)},
-                        {new Tile(2), new Tile(3), new Tile(0), new Tile(4), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(2), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(4), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(3), new Tile(1), new Tile(0)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(2), new Tile(2), new Tile(2), new Tile(1), new Tile(1)},
-                        {new Tile(2), new Tile(3), new Tile(2), new Tile(4), new Tile(1)},
-                        {new Tile(3), new Tile(3), new Tile(2), new Tile(4), new Tile(1)},
-                        {new Tile(3), new Tile(4), new Tile(4), new Tile(4), new Tile(1)},
-                        {new Tile(3), new Tile(3), new Tile(3), new Tile(1), new Tile(1)}
-                };
-
-                this.row    = 5;
-                this.column = 5;
-
+                level_7();
                 break;
             case 8:
-                tiles = new Tile[][] {
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(1), new Tile(2)},
-                        {new Tile(0), new Tile(2), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(3), new Tile(1), new Tile(4), new Tile(3), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(4)}
-                };
-
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(2)},
-                        {new Tile(1), new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
-                        {new Tile(1), new Tile(1), new Tile(4), new Tile(4), new Tile(4)},
-                        {new Tile(3), new Tile(1), new Tile(4), new Tile(3), new Tile(4)},
-                        {new Tile(3), new Tile(3), new Tile(3), new Tile(3), new Tile(4)}
-                };
-
-                this.row    = 5;
-                this.column = 5;
-
+                level_8();
                 break;
             case 9:
-                tiles = new Tile[][] {
-                        {new Tile(0), new Tile(1), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(2), new Tile(0), new Tile(3), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(3), new Tile(4), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(1), new Tile(0), new Tile(0)},
-                        {new Tile(4), new Tile(0), new Tile(0), new Tile(0), new Tile(2)}
-                };
-
-                levelComplete = new Tile[][] {
-                        {new Tile(1), new Tile(1), new Tile(2), new Tile(2), new Tile(2)},
-                        {new Tile(1), new Tile(2), new Tile(2), new Tile(3), new Tile(2)},
-                        {new Tile(1), new Tile(3), new Tile(3), new Tile(3), new Tile(2)},
-                        {new Tile(1), new Tile(3), new Tile(4), new Tile(4), new Tile(2)},
-                        {new Tile(1), new Tile(1), new Tile(1), new Tile(4), new Tile(2)},
-                        {new Tile(4), new Tile(4), new Tile(4), new Tile(4), new Tile(2)}
-                };
-
-                this.row    = 6;
-                this.column = 5;
-
+                level_9();
                 break;
             case 10:
-                tiles = new Tile[][] {
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(4), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(3), new Tile(0), new Tile(0), new Tile(2), new Tile(5), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(3), new Tile(1), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(5), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(0), new Tile(0), new Tile(1), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
-                        {new Tile(2), new Tile(0), new Tile(0), new Tile(0), new Tile(4), new Tile(0), new Tile(0)}
-                };
-
-
-                levelComplete = new Tile[][] {
-                        {new Tile(2), new Tile(2), new Tile(2), new Tile(4), new Tile(4), new Tile(4), new Tile(4)},
-                        {new Tile(2), new Tile(3), new Tile(2), new Tile(2), new Tile(2), new Tile(5), new Tile(4)},
-                        {new Tile(2), new Tile(3), new Tile(3), new Tile(3), new Tile(1), new Tile(5), new Tile(4)},
-                        {new Tile(2), new Tile(5), new Tile(5), new Tile(5), new Tile(1), new Tile(5), new Tile(4)},
-                        {new Tile(2), new Tile(5), new Tile(1), new Tile(1), new Tile(1), new Tile(5), new Tile(4)},
-                        {new Tile(2), new Tile(5), new Tile(1), new Tile(5), new Tile(5), new Tile(5), new Tile(4)},
-                        {new Tile(2), new Tile(5), new Tile(5), new Tile(5), new Tile(4), new Tile(4), new Tile(4)}
-                };
-
-                this.row    = 7;
-                this.column = 7;
-
+                level_10();
                 break;
             default:
                 break;
@@ -263,4 +85,229 @@ public class Levels {
     public int getColumn() {
         return column;
     }
+
+
+
+    private void level_1() {
+        tiles = new Tile[][] {
+                {new Tile(1), new Tile(2), new Tile(1)},
+                {new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(2), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(2), new Tile(1)},
+                {new Tile(1), new Tile(2), new Tile(1)},
+                {new Tile(1), new Tile(2), new Tile(1)},
+                {new Tile(1), new Tile(1), new Tile(1)}
+        };
+
+        row    = 4;
+        column = 3;
+    }
+
+
+
+    private void level_2() {
+        tiles = new Tile[][] {
+                {new Tile(1), new Tile(3), new Tile(0), new Tile(1)},
+                {new Tile(0), new Tile(2), new Tile(3), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(2), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(3), new Tile(3), new Tile(1)},
+                {new Tile(1), new Tile(2), new Tile(3), new Tile(1)},
+                {new Tile(1), new Tile(2), new Tile(2), new Tile(1)},
+                {new Tile(1), new Tile(1), new Tile(1), new Tile(1)}
+        };
+
+        row    = 4;
+        column = 4;
+    }
+
+
+    private void level_3() {
+        tiles = new Tile[][] {
+                {new Tile(1), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(2), new Tile(0)},
+                {new Tile(0), new Tile(3), new Tile(0), new Tile(1)},
+                {new Tile(0), new Tile(2), new Tile(0), new Tile(3)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(1), new Tile(1), new Tile(1)},
+                {new Tile(2), new Tile(2), new Tile(2), new Tile(1)},
+                {new Tile(2), new Tile(3), new Tile(3), new Tile(1)},
+                {new Tile(2), new Tile(2), new Tile(3), new Tile(3)}
+        };
+
+        row    = 4;
+        column = 4;
+    }
+
+
+    private void level_4() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(1)},
+                {new Tile(2), new Tile(3), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(2), new Tile(0)},
+                {new Tile(0), new Tile(1), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(3)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(2), new Tile(2), new Tile(2), new Tile(1)},
+                {new Tile(2), new Tile(3), new Tile(2), new Tile(1)},
+                {new Tile(3), new Tile(3), new Tile(2), new Tile(1)},
+                {new Tile(3), new Tile(1), new Tile(1), new Tile(1)},
+                {new Tile(3), new Tile(3), new Tile(3), new Tile(3)}
+        };
+
+        row    = 5;
+        column = 4;
+    }
+
+
+    private void level_5() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(1), new Tile(2)},
+                {new Tile(0), new Tile(2), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(3), new Tile(0)},
+                {new Tile(3), new Tile(1), new Tile(0), new Tile(0), new Tile(0)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(2)},
+                {new Tile(1), new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+                {new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1)},
+                {new Tile(3), new Tile(3), new Tile(3), new Tile(3), new Tile(1)},
+                {new Tile(3), new Tile(1), new Tile(1), new Tile(1), new Tile(1)}
+        };
+
+        row    = 5;
+        column = 5;
+    }
+
+
+    private void level_6() {
+        tiles = new Tile[][] {
+                {new Tile(1), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(2), new Tile(0), new Tile(2), new Tile(3), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(1), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(3), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(1), new Tile(2), new Tile(2), new Tile(2)},
+                {new Tile(2), new Tile(1), new Tile(2), new Tile(3), new Tile(2)},
+                {new Tile(2), new Tile(1), new Tile(1), new Tile(3), new Tile(2)},
+                {new Tile(2), new Tile(3), new Tile(3), new Tile(3), new Tile(2)},
+                {new Tile(2), new Tile(2), new Tile(2), new Tile(2), new Tile(2)}
+        };
+
+        row    = 5;
+        column = 5;
+    }
+
+
+    private void level_7() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(1), new Tile(0)},
+                {new Tile(2), new Tile(3), new Tile(0), new Tile(4), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(2), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(4), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(3), new Tile(1), new Tile(0)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(2), new Tile(2), new Tile(2), new Tile(1), new Tile(1)},
+                {new Tile(2), new Tile(3), new Tile(2), new Tile(4), new Tile(1)},
+                {new Tile(3), new Tile(3), new Tile(2), new Tile(4), new Tile(1)},
+                {new Tile(3), new Tile(4), new Tile(4), new Tile(4), new Tile(1)},
+                {new Tile(3), new Tile(3), new Tile(3), new Tile(1), new Tile(1)}
+        };
+
+        row    = 5;
+        column = 5;
+    }
+
+
+    private void level_8() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(1), new Tile(2)},
+                {new Tile(0), new Tile(2), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(3), new Tile(1), new Tile(4), new Tile(3), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(4)}
+        };
+
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(2)},
+                {new Tile(1), new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+                {new Tile(1), new Tile(1), new Tile(4), new Tile(4), new Tile(4)},
+                {new Tile(3), new Tile(1), new Tile(4), new Tile(3), new Tile(4)},
+                {new Tile(3), new Tile(3), new Tile(3), new Tile(3), new Tile(4)}
+        };
+
+        row    = 5;
+        column = 5;
+    }
+
+
+    private void level_9() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(1), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(2), new Tile(0), new Tile(3), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(3), new Tile(4), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(1), new Tile(0), new Tile(0)},
+                {new Tile(4), new Tile(0), new Tile(0), new Tile(0), new Tile(2)}
+        };
+
+        levelComplete = new Tile[][] {
+                {new Tile(1), new Tile(1), new Tile(2), new Tile(2), new Tile(2)},
+                {new Tile(1), new Tile(2), new Tile(2), new Tile(3), new Tile(2)},
+                {new Tile(1), new Tile(3), new Tile(3), new Tile(3), new Tile(2)},
+                {new Tile(1), new Tile(3), new Tile(4), new Tile(4), new Tile(2)},
+                {new Tile(1), new Tile(1), new Tile(1), new Tile(4), new Tile(2)},
+                {new Tile(4), new Tile(4), new Tile(4), new Tile(4), new Tile(2)}
+        };
+
+        row    = 6;
+        column = 5;
+    }
+
+
+    private void level_10() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(4), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(3), new Tile(0), new Tile(0), new Tile(2), new Tile(5), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(3), new Tile(1), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(5), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(1), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(2), new Tile(0), new Tile(0), new Tile(0), new Tile(4), new Tile(0), new Tile(0)}
+        };
+
+
+        levelComplete = new Tile[][] {
+                {new Tile(2), new Tile(2), new Tile(2), new Tile(4), new Tile(4), new Tile(4), new Tile(4)},
+                {new Tile(2), new Tile(3), new Tile(2), new Tile(2), new Tile(2), new Tile(5), new Tile(4)},
+                {new Tile(2), new Tile(3), new Tile(3), new Tile(3), new Tile(1), new Tile(5), new Tile(4)},
+                {new Tile(2), new Tile(5), new Tile(5), new Tile(5), new Tile(1), new Tile(5), new Tile(4)},
+                {new Tile(2), new Tile(5), new Tile(1), new Tile(1), new Tile(1), new Tile(5), new Tile(4)},
+                {new Tile(2), new Tile(5), new Tile(1), new Tile(5), new Tile(5), new Tile(5), new Tile(4)},
+                {new Tile(2), new Tile(5), new Tile(5), new Tile(5), new Tile(4), new Tile(4), new Tile(4)}
+        };
+
+        row    = 7;
+        column = 7;
+    }
+
 }
