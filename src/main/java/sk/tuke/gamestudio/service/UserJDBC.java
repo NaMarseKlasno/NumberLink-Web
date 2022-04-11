@@ -32,7 +32,7 @@ public class UserJDBC implements UserService {
             user.setUserID( (long) getUserID(user));
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            throw new GameStudioException(e);
         }
     }
 
@@ -69,7 +69,7 @@ public class UserJDBC implements UserService {
                 e.printStackTrace();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new GameStudioException(e);
         }
         return null;
     }
@@ -82,7 +82,7 @@ public class UserJDBC implements UserService {
         ) {
             statement.executeUpdate(DELETE_STATEMENT);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new GameStudioException(e);
         }
     }
 
@@ -95,7 +95,7 @@ public class UserJDBC implements UserService {
             pstmt.executeUpdate();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            throw new GameStudioException(e);
         }
     }
 
