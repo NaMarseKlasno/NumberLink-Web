@@ -3,17 +3,16 @@ package sk.tuke.gamestudio.service;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import sk.tuke.gamestudio.entity.User;
-import sk.tuke.gamestudio.entity.UserJDBC;
+import sk.tuke.gamestudio.entity.Person;
 
 
-public class UserServiceTest {
+public class UserJDBCTest {
 
     private final UserJDBC userJDBC = new UserJDBC();
 
     @Test
     public void testAddUser() {
-        userJDBC.addUser(new User("Kukla", 10));
+        userJDBC.addUser(new Person("Kukla", 10));
 
         var list = userJDBC.getUsersList();
         assertEquals(1, list.size());
@@ -23,10 +22,10 @@ public class UserServiceTest {
 
     @Test
     public void testAddUser_2() {
-        userJDBC.addUser(new User("Kukla1",5));
-        userJDBC.addUser(new User("Kukla2",4));
-        userJDBC.addUser(new User("Kukla3",3));
-        userJDBC.addUser(new User("Kukla4",6));
+        userJDBC.addUser(new Person("Kukla1",5));
+        userJDBC.addUser(new Person("Kukla2",4));
+        userJDBC.addUser(new Person("Kukla3",3));
+        userJDBC.addUser(new Person("Kukla4",6));
 
         var list = userJDBC.getUsersList();
         assertEquals(4, list.size());
@@ -43,10 +42,10 @@ public class UserServiceTest {
 
     @Test
     public void testGetUsersList() {
-        userJDBC.addUser(new User("Kukla1",5));
-        userJDBC.addUser(new User("Kukla2",4));
-        userJDBC.addUser(new User("Kukla3",3));
-        userJDBC.addUser(new User("Kukla4",6));
+        userJDBC.addUser(new Person("Kukla1",5));
+        userJDBC.addUser(new Person("Kukla2",4));
+        userJDBC.addUser(new Person("Kukla3",3));
+        userJDBC.addUser(new Person("Kukla4",6));
 
         var Users = userJDBC.getUsersList();
 

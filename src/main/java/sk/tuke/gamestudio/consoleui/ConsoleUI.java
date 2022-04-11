@@ -1,20 +1,21 @@
 package sk.tuke.gamestudio.consoleui;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import sk.tuke.gamestudio.core.Field;
-import sk.tuke.gamestudio.entity.User;
-import sk.tuke.gamestudio.entity.UserJDBC;
+import sk.tuke.gamestudio.entity.Person;
+import sk.tuke.gamestudio.service.UserService;
 
 import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private UserJDBC userJDBC = new UserJDBC();
-    private User currentUser;
-
+    @Autowired
+    private UserService userService;
 
     private final Field field;
     private final Scanner in = new Scanner(System.in);
     private int currentLvl;
+
 
     public ConsoleUI(Field field, int lvl) {
         this.field = field;
@@ -30,8 +31,7 @@ public class ConsoleUI {
 
     public void play()
     {
-        this.currentUser = this.inUser();
-        this.userJDBC.addUser(currentUser);
+        Person currentUser = this.login();
 
         do {
             printDetails();
@@ -40,8 +40,8 @@ public class ConsoleUI {
 
             if (field.isLevelSolved()) {
                 this.field.generate(++currentLvl);
-                this.currentUser.setLastLevel(currentLvl);
-                this.userJDBC.update(currentUser);
+                currentUser.setLastLevel(currentLvl);
+                this.userService.update(currentUser);
             }
 
         } while (currentLvl<=10);
@@ -78,12 +78,23 @@ public class ConsoleUI {
         } System.out.print("\n");
     }
 
-    private User inUser()
+    private Person login()
     {
         System.out.print("Enter nickname: ");
         String name = in.nextLine();
 
-        return new User(name, this.currentLvl);
+        Person findUser = userService.getPerson(name);
+
+        if (findUser != null) {
+            this.currentLvl = findUser.getLastLevel() > 10 ? 0 : findUser.getLastLevel();
+            field.generate(currentLvl);
+        } else {
+            findUser = new Person(name, this.currentLvl);
+            userService.addUser(findUser);
+        }
+
+        return findUser;
+
     }
 
     private void processInput()
@@ -97,17 +108,20 @@ public class ConsoleUI {
         }
 
         if ("SHOW".equals(line)) {
-            var list = userJDBC.getUsersList();
+            var list = userService.getUsersList();
 
+            System.out.println("\n────────────────");
+            if (list.size() == 0) System.out.println("    empty ...   ");
             for (int i = 0; i < list.size(); i++) {
                 var user = list.get(i);
-                System.out.printf("%d. |%s - %d|\n", i+1, user.getUserName(), user.getLastLevel());
-            }
+                System.out.printf("%d. %s - %d\n", i+1, user.getUserName(), user.getLastLevel());
+            } System.out.println("────────────────\n");
 
+            return;
         }
 
         if ("RESET".equals(line)) {
-            userJDBC.reset();
+            userService.reset();
             return;
         }
 

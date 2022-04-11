@@ -1,18 +1,27 @@
 package sk.tuke.gamestudio.entity;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
-public class User {
+
+@Entity
+public class Person {
+
+    @Id
+    @GeneratedValue
+    private Long userID;
 
     private String userName;
     private int lastLevel;
-    private int userID;
 
-    public User(String userName, int lastLevel) {
+
+    public Person(String userName, int lastLevel) {
         this.userName = userName;
         this.lastLevel = lastLevel;
+    }
+
+    public Person() {
     }
 
     public String getUserName() {
@@ -31,11 +40,11 @@ public class User {
         this.lastLevel = lastLevel;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 
-    public int getUserID() {
+    public Long getUserID() {
         return userID;
     }
 }

@@ -1,4 +1,6 @@
-package sk.tuke.gamestudio.entity;
+package sk.tuke.gamestudio.service;
+
+import sk.tuke.gamestudio.entity.Person;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -6,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserJDBC implements UserServise {
+public class UserJDBC implements UserService {
 
     private static final String username = "macbookpro";
     private static final String password = "moskva4";
@@ -19,7 +21,7 @@ public class UserJDBC implements UserServise {
 
 
     @Override
-    public void addUser(User user) {
+    public void addUser(Person user) {
         try (var connection = DriverManager.getConnection(url, username, password);
              var statement = connection.prepareStatement(INSERT_STATEMENT);
         ) {
@@ -27,14 +29,14 @@ public class UserJDBC implements UserServise {
             statement.setString(1, user.getUserName());
             statement.setInt(2, user.getLastLevel());
             statement.executeUpdate();
-            user.setUserID(getUserID(user));
+            user.setUserID( (long) getUserID(user));
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private int getUserID(User user)
+    private int getUserID(Person user)
     {
         int userID = -1;
 
@@ -45,7 +47,6 @@ public class UserJDBC implements UserServise {
             while(rs.next()) {
                 userID = rs.getInt("id");
             }
-            System.out.println("================: " + userID);
             return userID;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,14 +55,14 @@ public class UserJDBC implements UserServise {
     }
 
     @Override
-    public List<User> getUsersList() {
+    public List<Person> getUsersList() {
         try (var connection = DriverManager.getConnection(url, username, password);
              var statement = connection.prepareStatement(SELECT_STATEMENT)
         ) {
             try (var rs = statement.executeQuery()) {
-                var users = new ArrayList<User>();
+                var users = new ArrayList<Person>();
                 while (rs.next()) {
-                    users.add(new User(rs.getString(2), rs.getInt(3)));
+                    users.add(new Person(rs.getString(2), rs.getInt(3)));
                 }
                 return users;
             } catch (SQLException e) {
@@ -86,7 +87,7 @@ public class UserJDBC implements UserServise {
     }
 
     @Override
-    public void update(User user)
+    public void update(Person user)
     {
         try (var connection = DriverManager.getConnection(url, username, password);
              var pstmt = connection.prepareStatement("UPDATE usertable SET lastLevel = " + user.getLastLevel() + " WHERE id = " + user.getUserID());
@@ -96,6 +97,11 @@ public class UserJDBC implements UserServise {
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Person getPerson(String name) {
+        return null;
     }
 
 }
