@@ -2,9 +2,14 @@ package sk.tuke.gamestudio;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.web.client.RestTemplate;
 import sk.tuke.gamestudio.consoleui.ConsoleUI;
 import sk.tuke.gamestudio.core.Field;
 import sk.tuke.gamestudio.service.UserJPA;
@@ -12,13 +17,12 @@ import sk.tuke.gamestudio.service.UserService;
 
 @SpringBootApplication
 @Configuration
-//@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "sk.tuke.gamestudio.server.*"))
+@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "sk.tuke.gamestudio.server.*"))
 public class WebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebApplication.class, args);
-//        new SpringApplicationBuilder(WebApplication.class).web(WebApplicationType.NONE).run(args);
-
+//        SpringApplication.run(WebApplication.class, args);
+        new SpringApplicationBuilder(WebApplication.class).web(WebApplicationType.NONE).run(args);
     }
 
     @Bean
@@ -43,8 +47,8 @@ public class WebApplication {
     }
 
 
-//    @Bean
-//    public RestTemplate restTemplate() {
-//        return new RestTemplate();
-//    }
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }

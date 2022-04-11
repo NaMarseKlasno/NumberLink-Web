@@ -94,7 +94,6 @@ public class ConsoleUI {
         }
 
         return findUser;
-
     }
 
     private void processInput()

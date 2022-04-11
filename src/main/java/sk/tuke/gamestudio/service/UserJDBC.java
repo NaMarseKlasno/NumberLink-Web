@@ -12,7 +12,7 @@ public class UserJDBC implements UserService {
 
     private static final String username = "macbookpro";
     private static final String password = "moskva4";
-    private static final String url = "jdbc:postgresql://localhost:5433/postgres";
+    private static final String url = "jdbc:postgresql://localhost:5434/postgres";
 
     public static final String INSERT_STATEMENT = "INSERT INTO usertable (player, lastLevel) VALUES (?, ?)";
     public static final String SELECT_STATEMENT = "SELECT player, lastLevel FROM usertable";
