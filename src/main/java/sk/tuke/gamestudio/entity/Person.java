@@ -9,8 +9,8 @@ import java.util.Date;
 public class Person {
 
     @Id
-    @GeneratedValue
-    private Long userID;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long userID;
 
     private String userName;
     private int lastLevel;
@@ -40,11 +40,11 @@ public class Person {
         this.lastLevel = lastLevel;
     }
 
-    public void setUserID(Long userID) {
+    public void setUserID(long userID) {
         this.userID = userID;
     }
 
-    public Long getUserID() {
+    public long getUserID() {
         return userID;
     }
 }
