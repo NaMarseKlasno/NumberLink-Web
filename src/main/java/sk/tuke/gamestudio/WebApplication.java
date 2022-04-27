@@ -12,10 +12,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.web.client.RestTemplate;
 import sk.tuke.gamestudio.consoleui.ConsoleUI;
 import sk.tuke.gamestudio.core.Field;
-import sk.tuke.gamestudio.service.CommentJPA;
-import sk.tuke.gamestudio.service.CommentService;
-import sk.tuke.gamestudio.service.UserJPA;
-import sk.tuke.gamestudio.service.UserService;
+import sk.tuke.gamestudio.service.*;
 
 @SpringBootApplication
 @Configuration
@@ -45,7 +42,8 @@ public class WebApplication {
 
     @Bean
     public UserService userService() {
-        return new UserJPA();
+        return new UserServiceRestClient();
+//        return new UserJPA();
     }
 
     @Bean

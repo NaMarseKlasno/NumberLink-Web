@@ -11,20 +11,20 @@ import java.util.Objects;
 
 public class UserServiceRestClient implements UserService {
     //See value of remote.server.api in application.properties
-    @Value("${remote.server.api}")
-    private String url;
+    private final String url = "http://localhost:8080/api/users";
+
 
     @Autowired
     private RestTemplate restTemplate;
 
     @Override
     public void addUser(Person user) {
-        restTemplate.postForEntity(url + "/user", user, Person.class);
+        restTemplate.postForEntity(url, user, Person.class);
     }
 
     @Override
     public List<Person> getUsersList() {
-        return Arrays.asList(Objects.requireNonNull(restTemplate.getForEntity(url + "/user/", Person[].class).getBody()));
+        return Arrays.asList(restTemplate.getForEntity(url + "/", Person[].class).getBody());
     }
 
     @Override
@@ -34,11 +34,13 @@ public class UserServiceRestClient implements UserService {
 
     @Override
     public void update(Person user) {
-
+        throw new UnsupportedOperationException("Not supported via web service");
     }
 
     @Override
     public Person getPerson(String name) {
         return null;
+//        return restTemplate.getForObject(url, Person.class, name);
+//        return new Person("lalalalalalal", 100);
     }
 }
