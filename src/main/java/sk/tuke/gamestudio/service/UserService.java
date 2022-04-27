@@ -1,7 +1,6 @@
 package sk.tuke.gamestudio.service;
 
 import sk.tuke.gamestudio.entity.Person;
-
 import java.util.List;
 
 //@Component

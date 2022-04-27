@@ -2,7 +2,9 @@ package sk.tuke.gamestudio.consoleui;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import sk.tuke.gamestudio.core.Field;
+import sk.tuke.gamestudio.entity.Comment;
 import sk.tuke.gamestudio.entity.Person;
+import sk.tuke.gamestudio.service.CommentService;
 import sk.tuke.gamestudio.service.UserService;
 
 import java.util.Scanner;
@@ -11,10 +13,14 @@ public class ConsoleUI {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private CommentService commentService;
 
     private final Field field;
     private final Scanner in = new Scanner(System.in);
     private int currentLvl;
+    private Person currentUser;
+    private Comment comment;
 
 
     public ConsoleUI(Field field, int lvl) {
@@ -31,7 +37,7 @@ public class ConsoleUI {
 
     public void play()
     {
-        Person currentUser = this.login();
+        this.currentUser = this.login();
 
         do {
             printDetails();
@@ -96,6 +102,24 @@ public class ConsoleUI {
         return findUser;
     }
 
+
+
+    private void addComment() {
+        System.out.print("Write a comment: ");
+        String str = in.nextLine();
+
+        this.comment = new Comment(this.currentUser.getUserID(), str);
+        this.commentService.addComment(this.comment);
+    }
+
+    private void rmComment() {
+        this.commentService.deleteLastComment();
+    }
+
+    private void resetComments() {
+        this.commentService.reset();
+    }
+
     private void processInput()
     {
         System.out.print("Enter command: ");
@@ -123,6 +147,21 @@ public class ConsoleUI {
             userService.reset();
             return;
         }
+
+
+        if ("ADD COMMENT".equals(line)) {
+            addComment();
+            return;
+        }
+        if ("RM COMMENT".equals(line)) {
+            rmComment();
+            return;
+        }
+        if ("RESET COMMENTS".equals(line)) {
+            resetComments();
+            return;
+        }
+
 
         if (line.length() < 4) {
             System.out.println("\u001B[31m"+ "Command failed!"+"\u001B[0m");

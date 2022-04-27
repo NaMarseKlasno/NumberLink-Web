@@ -1,0 +1,14 @@
+.animation {
+    /*background: #eee url(anim2.gif) no-repeat left top;*/
+    background-image:url(anim2.gif);
+}
+img {
+    position: relative;
+}
+.span {
+    position: absolute;
+
+    top: 70%;
+    right: 37%;
+}
+

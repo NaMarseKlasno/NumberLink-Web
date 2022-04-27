@@ -8,7 +8,7 @@ import sk.tuke.gamestudio.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserServiceRest {
 
     @Autowired

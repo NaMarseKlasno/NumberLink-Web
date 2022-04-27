@@ -7,6 +7,7 @@ import sk.tuke.gamestudio.entity.Person;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class UserServiceRestClient implements UserService {
     //See value of remote.server.api in application.properties
@@ -18,12 +19,12 @@ public class UserServiceRestClient implements UserService {
 
     @Override
     public void addUser(Person user) {
-        restTemplate.postForEntity(url + "/score", user, Person.class);
+        restTemplate.postForEntity(url + "/user", user, Person.class);
     }
 
     @Override
     public List<Person> getUsersList() {
-        return Arrays.asList(restTemplate.getForEntity(url + "/user/", Person[].class).getBody());
+        return Arrays.asList(Objects.requireNonNull(restTemplate.getForEntity(url + "/user/", Person[].class).getBody()));
     }
 
     @Override

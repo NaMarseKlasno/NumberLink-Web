@@ -10,7 +10,7 @@ public class Person {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long userID;
+    private Long userID;
 
     private String userName;
     private int lastLevel;
@@ -44,7 +44,7 @@ public class Person {
         this.userID = userID;
     }
 
-    public long getUserID() {
+    public Long getUserID() {
         return userID;
     }
 }
