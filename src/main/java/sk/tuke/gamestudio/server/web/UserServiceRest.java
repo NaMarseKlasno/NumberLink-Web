@@ -23,4 +23,9 @@ public class UserServiceRest {
     public void addUser(@RequestBody Person user) {
         userService.addUser(user);
     }
+
+    @GetMapping("/{name}")
+    public Person getPerson(@PathVariable("name") String name) {
+        return userService.getPerson(name);
+    }
 }

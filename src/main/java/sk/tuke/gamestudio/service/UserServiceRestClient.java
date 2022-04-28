@@ -11,7 +11,8 @@ import java.util.Objects;
 
 public class UserServiceRestClient implements UserService {
     //See value of remote.server.api in application.properties
-    private final String url = "http://localhost:8080/api/users";
+    @Value("${remote.server.api}")
+    private String url;
 
 
     @Autowired
@@ -19,12 +20,12 @@ public class UserServiceRestClient implements UserService {
 
     @Override
     public void addUser(Person user) {
-        restTemplate.postForEntity(url, user, Person.class);
+        restTemplate.postForEntity(url+"/users/", user, Person.class);
     }
 
     @Override
     public List<Person> getUsersList() {
-        return Arrays.asList(restTemplate.getForEntity(url + "/", Person[].class).getBody());
+        return Arrays.asList(restTemplate.getForEntity(url, Person[].class).getBody());
     }
 
     @Override
@@ -39,8 +40,9 @@ public class UserServiceRestClient implements UserService {
 
     @Override
     public Person getPerson(String name) {
-        return null;
+//        return null;
+        System.out.println(url);
+        return restTemplate.getForObject(url + "/users/" + name , Person.class);
 //        return restTemplate.getForObject(url, Person.class, name);
-//        return new Person("lalalalalalal", 100);
     }
 }
