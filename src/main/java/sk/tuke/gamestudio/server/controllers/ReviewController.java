@@ -85,6 +85,8 @@ public class ReviewController {
     private Double getAverageRating() {
         Double res = Double.valueOf(0);
 
+        if (reviewService.getReviewList().size() == 0) return res;
+
         for (int i = 0; i < reviewService.getReviewList().size(); i++) {
             res += reviewService.getReviewList().get(i).getRating();
         } res /= reviewService.getReviewList().size();

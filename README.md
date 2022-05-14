@@ -4,7 +4,9 @@
 
 ### **Video Presentation**
 
-> **https://www.youtube.com/watch?v=4O8ZoFhhQwk** 
+> **https://youtu.be/K9xVJPGDz0M** Final version
+
+> **https://www.youtube.com/watch?v=4O8ZoFhhQwk** JPA + REST
 
 
 
