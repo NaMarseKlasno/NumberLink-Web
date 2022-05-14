@@ -16,9 +16,6 @@
 
     <style>
 
-        .checked {
-            color: orange;
-        }
         /*.bd-placeholder-img {*/
         /*    font-size: 1.125rem;*/
         /*    text-anchor: middle;*/
@@ -63,7 +60,7 @@
 
 
             <div class="carousel-item active">
-                <div class="overlay-image" style="background-image: url(/others/cats3.png); opacity: 0.65;"></div>
+                <div class="overlay-image" style="background-image: url(/others/cats.png); opacity: 0.65;"></div>
 
                 <div class="container" style="bottom: 0; padding-bottom: 50px; left: 0; right: 0;">
                     <div class="carousel-caption text-start">
@@ -75,11 +72,11 @@
             </div>
 
             <div class="carousel-item">
-                <div class="overlay-image" style="background-image: url(/others/bg-anim.png); opacity: 0.8;"></div>
+                <div class="overlay-image" style="background-image: url(/others/cats2.jpg); opacity: 0.6;"></div>
             </div>
 
             <div class="carousel-item">
-                <div class="overlay-image" style="background-image: url(/others/cat.jpeg);"></div>
+                <div class="overlay-image" style="background-image: url(/others/cats3.png);"></div>
             </div>
 
         </div>
@@ -96,7 +93,8 @@
         </button>
     </div>
 
-    <div class="container text-center mt-5 text-white col-md-3" >
+
+    <div class="container text-center mt-5 mb-5 text-white col-md-3" >
         <h1 class="h2 mb-4 fw-bold text-white">Please leave a review</h1>
 
         <form action="/get-review" method="post">
@@ -126,31 +124,17 @@
         </form>
         </form>
 
-
-
-
-
     </div>
 
-    <div class="container text-white mt-5">
-<!--        <div class="col ">-->
-            <!--            <div class="col-md-4" th:utext="${@numberlinkController.getHtmlField}"></div>-->
 
-<!--            <div class="col align-self-center">-->
-                <div th:utext="${@reviewController.getListOfComments}" style="display: flex; justify-content: center;"/>
-<!--            </div>-->
-
-
-<!--            <div class="col-auto">-->
-<!--                <div th:utext="${@reviewController.getListOfComments}" style="display: flex; justify-content: start;"/>-->
-<!--            </div>-->
-
-
-<!--        </div>-->
-    </div>
+    <div th:utext="${@reviewController.getListOfComments}"/>
 
 
     <style>
+        .checked {
+            color: orange;
+        }
+
         /*body {padding:50px; margin:0px;}*/
         .stars{background: url("/stars/stars.png") repeat-x 0 0;width:150px;}
         .stars input[type="radio"]{position:absolute;opacity:0;filter: alpha(opacity=0);}

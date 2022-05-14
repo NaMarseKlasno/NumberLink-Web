@@ -57,20 +57,23 @@ public class ReviewController {
 
         for (int i = 0; i < reviewService.getReviewList().size(); i++) {
 
-//            sb.append("<div class='col align-self-center'>");
-            sb.append("<div class='card border-white bg-dark mb-4' style='width: 88rem;'>");
-            sb.append("<div class='card-body'>");
-            sb.append("<div class='container mb-2'> <div class='row justify-content-center'> <div class='col-auto'>");
-            sb.append("<h5 class='card-title'>" + userService.getPersonByID(reviewService.getReviewList().get(i).getUserID()).getUserName() + "</h5>");
-            sb.append("</div></div></div>");
+            sb.append("<div class='card bg-dark mb-4 col-auto text-white'>                                                                                                  ");
+            sb.append("    <div class='card-body'>                                                                                                                            ");
+            sb.append("        <div class='container mb-2 justify-content-start'>                                                                                             ");
+            sb.append("            <div class='row justify-content-between'>                                                                                              ");
+            sb.append("                <div class='col-auto'>                                                                                          ");
+            sb.append("                    <h5 class='card-title'>" + userService.getPersonByID(reviewService.getReviewList().get(i).getUserID()).getUserName() + "</h5>              ");
+            sb.append("                </div>                                                                                                                                         ");
+            sb.append("                <div class='col-auto'>                                                                                          ");
+            sb.append("                    <img src='/stars/rating_"+ reviewService.getReviewList().get(i).getRating()+".png'>                                                                                          ");
+            sb.append("                </div>                                                                                                                                         ");
+            sb.append("            </div>                                                                                                                                         ");
+            sb.append("            <p class='card-text justify-content-start'> <strong>").append(reviewService.getReviewList().get(i).getCommentedAt()).append("</strong>  ");
+            sb.append(                                       reviewService.getReviewList().get(i).getComment()).append("</p>                                                  ");
+            sb.append("        </div>                                                                                                                                         ");
+            sb.append("    </div>                                                                                                                                             ");
+            sb.append("</div>                                                                                                                                                 ");
 
-            sb.append("<p class='card-text'> <strong>").append(reviewService.getReviewList().get(i).getCommentedAt()).append("</strong> ");
-            sb.append(reviewService.getReviewList().get(i).getComment()).append("</p>");
-
-//            sb.append(showCommentByName(username));
-            sb.append("</div>");
-            sb.append("</div>");
-//            sb.append("</div>");
         }
 
 
