@@ -39,12 +39,26 @@ public class UserJPA implements UserService {
 
     @Override
     public Person getPerson(String name) {
+
+//        List<Person> list = getUsersList();
+//        for (Person person : list) {
+//            if (person.getUserName().equals(name)) {
+//                Person res = new Person(name, person.getLastLevel());
+//                res.setUserID(person.getUserID());
+//                return res;
+//            }
+//        }
+
         Person user = null;
 
         Query query = entityManager.createQuery("SELECT u FROM Person u WHERE u.userName=:name");
         query.setParameter("name", name);
 
+        try {
         user = (Person) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return user;
     }
