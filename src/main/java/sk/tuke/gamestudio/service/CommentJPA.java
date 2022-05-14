@@ -2,6 +2,7 @@ package sk.tuke.gamestudio.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import sk.tuke.gamestudio.entity.Comment;
 import sk.tuke.gamestudio.entity.Person;
 
@@ -16,6 +17,9 @@ public class CommentJPA implements CommentService {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private UserService userService;
 
 
     @Override
@@ -39,6 +43,9 @@ public class CommentJPA implements CommentService {
 //        entityManager.createNativeQuery("DELETE FROM comment").executeUpdate();
     }
 
-
+    @Override
+    public List<Comment> getCommentsListByPerson(String username) {
+        return entityManager.createQuery("select comment from Comment comment where  comment.userID = " + userService.getPerson(username).getUserID() ).getResultList();
+    }
 }
 

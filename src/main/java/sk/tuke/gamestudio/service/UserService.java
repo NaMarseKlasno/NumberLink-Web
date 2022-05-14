@@ -10,5 +10,6 @@ public interface UserService {
     void reset();
     void update(Person user);
     Person getPerson(String name);
+    Person getPersonByID(Long userID);
 }
 

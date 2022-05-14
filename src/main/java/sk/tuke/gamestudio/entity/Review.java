@@ -6,32 +6,31 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
-
 @Entity
-public class Comment {
-
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentID;
+    private Long reviewID;
 
     private String content;
     private Long userID;
     private String commentedAt;
+    private Integer rating;
 
 
-
-
-    public Comment(Long id, String content) {
-        this.userID = id;
+    public Review(Long userID, String content, Integer rating) {
+        this.userID = userID;
         this.content = content;
+        this.rating = rating;
+
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MMM dd, h:mm a", Locale.ENGLISH);
         this.commentedAt = myDateObj.format(myFormatObj);
     }
 
-    public Comment() {
+    public Review() {}
 
-    }
+
 
     public Long getUserID() {
         return userID;
@@ -41,21 +40,15 @@ public class Comment {
         return content;
     }
 
-
-    public void setCommentID(Long id) {
-        this.commentID = id;
-    }
-
-    public long getCommentID() {
-        return commentID;
-    }
-
-    public String  getCommentedAt() {
+    public String  getReviewedAt() {
         return commentedAt;
     }
 
-    public void setCommentedAt(String commentedAt) {
-        this.commentedAt = commentedAt;
+    public Integer getRating() {
+        return rating;
     }
 
+    public String getCommentedAt() {
+        return commentedAt;
+    }
 }

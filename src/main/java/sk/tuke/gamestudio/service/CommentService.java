@@ -9,6 +9,7 @@ public interface CommentService {
     List<Comment> getCommentsList();
     void reset();
     void deleteLastComment();
+    List<Comment> getCommentsListByPerson(String username);
 }
 
 

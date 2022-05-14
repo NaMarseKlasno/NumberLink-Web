@@ -7,6 +7,7 @@ import sk.tuke.gamestudio.entity.Person;
 import sk.tuke.gamestudio.service.CommentService;
 import sk.tuke.gamestudio.service.UserService;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleUI {

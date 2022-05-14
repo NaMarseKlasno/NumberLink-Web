@@ -5,6 +5,7 @@ import sk.tuke.gamestudio.entity.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 
@@ -38,30 +39,28 @@ public class UserJPA implements UserService {
 
     @Override
     public Person getPerson(String name) {
+        Person user = null;
 
+        Query query = entityManager.createQuery("SELECT u FROM Person u WHERE u.userName=:name");
+        query.setParameter("name", name);
+
+        user = (Person) query.getSingleResult();
+
+        return user;
+    }
+
+    @Override
+    public Person getPersonByID(Long userID) {
         List<Person> list = getUsersList();
 
         for (Person person : list) {
-            if (person.getUserName().equals(name)) {
-                Person res = new Person(name, person.getLastLevel());
+            if (person.getUserID().equals(userID)) {
+                Person res = new Person(person.getUserName(), person.getLastLevel());
                 res.setUserID(person.getUserID());
                 return res;
             }
         }
 
         return null;
-
-//        Person user = null;
-//
-//        Query query = entityManager.createQuery("SELECT u FROM Person u WHERE u.userName=:name");
-//        query.setParameter("name", name);
-//
-////        try {
-//        user = (Person) query.getSingleResult();
-////        } catch (Exception e) {
-////            e.printStackTrace();
-////        }
-//
-//        return user;
     }
 }

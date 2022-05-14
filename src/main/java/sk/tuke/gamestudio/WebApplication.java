@@ -52,6 +52,11 @@ public class WebApplication {
     }
 
     @Bean
+    public ReviewService reviewService() {
+        return new ReviewJPA();
+    }
+
+    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

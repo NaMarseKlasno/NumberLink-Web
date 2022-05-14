@@ -40,9 +40,11 @@ public class UserServiceRestClient implements UserService {
 
     @Override
     public Person getPerson(String name) {
-//        return null;
-        System.out.println(url);
         return restTemplate.getForObject(url + "/users/" + name , Person.class);
-//        return restTemplate.getForObject(url, Person.class, name);
+    }
+
+    @Override
+    public Person getPersonByID(Long userID) {
+        return null;
     }
 }

@@ -104,6 +104,11 @@ public class UserJDBC implements UserService {
         return null;
     }
 
+    @Override
+    public Person getPersonByID(Long userID) {
+        return null;
+    }
+
 }
 
 

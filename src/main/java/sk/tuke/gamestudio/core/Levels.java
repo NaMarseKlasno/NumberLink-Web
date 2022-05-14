@@ -43,6 +43,9 @@ public class Levels {
 
         switch (setLvl)
         {
+            case 0:
+                level_0();
+                break;
             case 1:
                 level_1();
                 break;
@@ -85,6 +88,34 @@ public class Levels {
     public int getColumn() {
         return column;
     }
+
+
+    private void level_0() {
+        tiles = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)}
+        };
+
+
+        levelComplete = new Tile[][] {
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(9), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
+                {new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0), new Tile(0)}
+        };
+
+        row    = 7;
+        column = 7;
+    }
+
 
 
 
