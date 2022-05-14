@@ -9,19 +9,29 @@
 
 
 ### **NumberLink**
-![alt text](src/main/resources/numberlink.png)
+![alt text](src/main/resources/git/numberlink.png)
 
 ### **Database example**
-![alt text](src/main/resources/db.png)
+![alt text](src/main/resources/git/db.png)
 
 ### **UML Diagram (will be updated at the end)**
-![alt text](src/main/resources/uml.png)
+![alt text](src/main/resources/git/uml.png)
+
+
+### **Web**
+![alt text](src/main/resources/git/screen_1.png)
+
+![alt text](src/main/resources/git/screen_2.png)
+
+![alt text](src/main/resources/git/screen_3.png)
 
 
 
 
 
-![alt text](src/main/resources/pic.png)
+
+
+![alt text](src/main/resources/git/pic.png)
 #### **good job <3**
 
 
