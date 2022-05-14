@@ -6,15 +6,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
-import sk.tuke.gamestudio.entity.Person;
 import sk.tuke.gamestudio.entity.Rating;
 import sk.tuke.gamestudio.entity.Review;
 import sk.tuke.gamestudio.service.ReviewService;
 import sk.tuke.gamestudio.service.UserService;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)
@@ -33,7 +33,9 @@ public class ReviewController {
 
     @RequestMapping("/about-us")
     public String aboutUs(Model model) {
+
         model.addAttribute("ratingClass", new Rating());
+        model.addAttribute("averageRating", "Average Rating: " + BigDecimal.valueOf(getAverageRating()).setScale(1, RoundingMode.HALF_UP).doubleValue() + " out of 5");
 
         return "aboutUs";
     }
@@ -80,7 +82,13 @@ public class ReviewController {
         return sb.toString();
     }
 
+    private Double getAverageRating() {
+        Double res = Double.valueOf(0);
 
+        for (int i = 0; i < reviewService.getReviewList().size(); i++) {
+            res += reviewService.getReviewList().get(i).getRating();
+        } res /= reviewService.getReviewList().size();
 
-
+        return res;
+    }
 }
